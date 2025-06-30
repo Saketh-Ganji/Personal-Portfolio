@@ -27,5 +27,4 @@ This is my personal developer portfolio built using the MERN stack and deployed 
 - Git + GitHub for version control
 - Vercel for deployment
 
-## 📁 Project Structure
 
