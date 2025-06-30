@@ -81,16 +81,17 @@ function App() {
 
   return (
            <Box
-    sx={{
-      background: `linear-gradient(
-        180deg,
-        ${theme.palette.background.default} 0%,
-        ${theme.palette.background.paper} 40%,
-        ${theme.palette.background.default} 100%
-      )`,
-      minHeight: '100vh'
-    }}
-  >
+  sx={{
+    minHeight: '100vh',
+    backgroundColor: theme.palette.background.default,
+    backgroundImage: theme.palette.mode === 'dark'
+      ? `url('https://www.transparenttextures.com/patterns/ripples.png')`
+      : `url('https://www.transparenttextures.com/patterns/ripples.png')`,
+    backgroundRepeat: 'repeat',
+    backgroundSize: 'cover'
+  }}
+>
+
 
       <motion.div
   style={{
@@ -170,51 +171,72 @@ function App() {
       {/* Offset for fixed navbar */}
       <Toolbar />
 
-      {/* Hero Section */}
-      <Element name="home">
-        <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      >
-  <Box
-    sx={{
-      minHeight: '90vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexDirection: 'column',
-      textAlign: 'center',
-      px: 2
-    }}
+     {/* Hero Section */}
+<Element name="home">
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 1 }}
   >
-    <Typography variant="h3" fontWeight="bold" gutterBottom>
-      Hi, I'm Saketh Ganji
-    </Typography>
+    <Box sx={{ position: 'relative', pb: 12 }}>
+      <Box
+        sx={{
+          minHeight: '90vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          textAlign: 'center',
+          px: 2
+        }}
+      >
+        <Typography variant="h3" fontWeight="bold" gutterBottom>
+          Hi, I'm Saketh Ganji
+        </Typography>
 
-    <Typography variant="h6" color="text.secondary" gutterBottom>
-      A Computer Science undergraduate at Sreyas Institute of Engineering and Technology.   
-       </Typography>
+        <Typography variant="h6" color="text.secondary" gutterBottom>
+          A Computer Science undergraduate at Sreyas Institute of Engineering and Technology.
+        </Typography>
 
-    <Box sx={{ mt: 3, display: 'flex', gap: 2 }}>
-      <MotionButton
-      variant="contained"
-      color="primary"
-      href="/resume.pdf"
-       download
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
-       Download Resume
-    </MotionButton>
+        <Box sx={{ mt: 3, display: 'flex', gap: 2 }}>
+          <MotionButton
+            variant="contained"
+            color="primary"
+            href="/resume.pdf"
+            download
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Download Resume
+          </MotionButton>
 
+          <ScrollLink to="projects" smooth={true} duration={500}>
+            <Button>View Projects</Button>
+          </ScrollLink>
+        </Box>
+      </Box>
 
-      <ScrollLink to="projects" smooth={true} duration={500}>
-  <Button>View Projects</Button>
-</ScrollLink>
-
+      {/* ✅ Wave background */}
+      <Box
+        component="svg"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+        sx={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: 'auto',
+          display: 'block'
+        }}
+      >
+        <path
+          fill={theme.palette.mode === 'dark' ? '#121212' : '#f5f5f5'}
+          fillOpacity="1"
+          d="M0,224L80,192C160,160,320,96,480,101.3C640,107,800,181,960,197.3C1120,213,1280,171,1360,149.3L1440,128V320H0Z"
+        />
+      </Box>
     </Box>
-  </Box>
   </motion.div>
 </Element>
 
